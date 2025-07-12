@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700;
+  }
+  
+  .voice-pulse {
+    @apply animate-pulse-slow;
+  }
+  
+  .listening-indicator {
+    @apply relative overflow-hidden;
+  }
+  
+  .listening-indicator::before {
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-primary-500/20 to-transparent;
+    content: '';
+    animation: shimmer 2s infinite;
+  }
+  
+  .demo-control-panel {
+    @apply glass-effect rounded-xl p-6 shadow-xl;
+  }
+  
+  .voice-button {
+    @apply relative overflow-hidden rounded-full p-4 transition-all duration-300;
+    @apply hover:scale-105 active:scale-95;
+  }
+  
+  .voice-button.listening {
+    @apply bg-red-500 animate-pulse;
+  }
+  
+  .voice-button.processing {
+    @apply bg-yellow-500 animate-spin-slow;
+  }
+  
+  .voice-button.idle {
+    @apply bg-primary-600 hover:bg-primary-700;
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes voice-wave {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.5); }
+}
+
+.voice-wave {
+  animation: voice-wave 1s ease-in-out infinite;
+}
+
+.voice-wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.voice-wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.voice-wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.voice-wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary-500;
+} 

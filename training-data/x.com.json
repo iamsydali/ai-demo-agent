@@ -1,0 +1,128 @@
+{
+  "site": "x.com",
+  "domain": "x.com",
+  "category": "social_media",
+  "description": "Social media platform for sharing thoughts, news, and updates in real-time",
+  "commonActions": {
+    "post_tweet": {
+      "selector": "[data-testid='tweetButton'], [data-testid='tweetButtonInline']",
+      "description": "Create a new tweet/post",
+      "steps": ["click compose button", "type content", "click post"],
+      "alternatives": ["[aria-label*='Post']", "button:has-text('Post')"]
+    },
+    "like_tweet": {
+      "selector": "[data-testid='like']",
+      "description": "Like a tweet",
+      "steps": ["click like button on tweet"],
+      "alternatives": ["[aria-label*='Like']"]
+    },
+    "retweet": {
+      "selector": "[data-testid='retweet']",
+      "description": "Retweet a post",
+      "steps": ["click retweet button", "confirm retweet"],
+      "alternatives": ["[aria-label*='Repost']"]
+    },
+    "view_profile": {
+      "selector": "[data-testid='AppTabBar_Profile_Link']",
+      "description": "Go to user profile",
+      "steps": ["click profile link in navigation"],
+      "alternatives": ["[href='/']", "a:has-text('Profile')"]
+    },
+    "search": {
+      "selector": "[data-testid='SearchBox_Search_Input']",
+      "description": "Search for content",
+      "steps": ["click search box", "type search term", "press enter"],
+      "alternatives": ["input[placeholder*='Search']"]
+    },
+    "follow_user": {
+      "selector": "[data-testid*='follow']",
+      "description": "Follow a user",
+      "steps": ["click follow button on profile"],
+      "alternatives": ["button:has-text('Follow')"]
+    }
+  },
+  "uiPatterns": {
+    "main_navigation": "Top horizontal bar with Home, Explore, Notifications, Messages, etc.",
+    "content_area": "Center timeline feed with tweets",
+    "sidebar_left": "Navigation menu and user info",
+    "sidebar_right": "Trending topics and suggestions",
+    "compose_area": "Modal or inline composer for new tweets"
+  },
+  "keyFeatures": [
+    "Post tweets with text, images, videos",
+    "Follow other users and see their content",
+    "Like, retweet, and reply to posts", 
+    "Direct messaging",
+    "Trending topics and hashtags",
+    "User profiles with bio and stats"
+  ],
+  "selectors": {
+    "tweet_button": "[data-testid='tweetButton']",
+    "home_timeline": "[data-testid='primaryColumn']",
+    "tweet_text": "[data-testid='tweetTextarea_0']",
+    "search_input": "[data-testid='SearchBox_Search_Input']",
+    "profile_link": "[data-testid='AppTabBar_Profile_Link']",
+    "notifications": "[data-testid='AppTabBar_Notifications_Link']",
+    "messages": "[data-testid='AppTabBar_DirectMessage_Link']"
+  },
+  "workflows": [
+    {
+      "name": "create_post",
+      "description": "Create and publish a new tweet",
+      "category": "content_creation",
+      "steps": [
+        {
+          "action": "click",
+          "selector": "[data-testid='tweetButton']",
+          "description": "Open tweet composer"
+        },
+        {
+          "action": "type",
+          "selector": "[data-testid='tweetTextarea_0']", 
+          "text": "Sample tweet content",
+          "description": "Type tweet content"
+        },
+        {
+          "action": "click",
+          "selector": "[data-testid='tweetButtonInline']",
+          "description": "Publish the tweet"
+        }
+      ]
+    },
+    {
+      "name": "search_content",
+      "description": "Search for specific content on the platform",
+      "category": "discovery",
+      "steps": [
+        {
+          "action": "click",
+          "selector": "[data-testid='SearchBox_Search_Input']",
+          "description": "Focus search input"
+        },
+        {
+          "action": "type",
+          "selector": "[data-testid='SearchBox_Search_Input']",
+          "text": "search term",
+          "description": "Enter search query"
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "description": "Execute search"
+        }
+      ]
+    },
+    {
+      "name": "view_notifications",
+      "description": "Check notifications and interactions",
+      "category": "engagement",
+      "steps": [
+        {
+          "action": "click", 
+          "selector": "[data-testid='AppTabBar_Notifications_Link']",
+          "description": "Navigate to notifications tab"
+        }
+      ]
+    }
+  ]
+} 
